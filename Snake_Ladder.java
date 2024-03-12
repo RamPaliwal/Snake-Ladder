@@ -1,39 +1,72 @@
 public class Snake_Ladder {
     public static void main(String[] args) {
         int position=0;
+        int No_play=0;
         int Ladder=1;
         int Snake=2;
-        int dice_count=0;
+        int currentplayer=1;
+        int player1=1;
+        int player2=2;
         while(position<=100){
-            dice_count+=1;
             int option=(int) Math.floor(Math.random()*10)%3;
             int num = (int) Math.floor(Math.random()*10)%6+1;
             if(option==Ladder){
-                if(num+position<=100){
-                position += num;
+                if(currentplayer==1){
+                    if(num+player1<=100){
+                        player1 += num;
+                        System.out.println("Selected option is Ladder");
+                        System.out.println("Player 1 is at position "+player1);
+                        System.out.println("Player 2 is at position "+player2);
+                        if(player1==100){
+                            System.out.println("Player 1 win");
+                            break;
+                        }
+                        System.out.println("Player 1 play again");
+                        System.err.println();
+                        continue;
+                    }
+                    
                 }
-                System.out.println("Selected option is Ladder");
-                System.out.println("You are at position "+position);
-                System.out.println();
+                else{    
+                    if(num+player2<=100){
+                        player2 += num;
+                        System.out.println("Selected option is Ladder");
+                        System.out.println("Player 1 is at position "+player1);
+                        System.out.println("Player 2 is at position "+player2);
+                        if(player2==100){
+                            System.out.println("Player 2 win");
+                            break;
+                        }
+                        System.out.println("Player 2 play again");
+                        System.err.println();
+                        continue;
+                    }
+                    
+                } 
             }
-            else if(option==Snake){
-                if(position>=num){
-                    position -= num;
+            if(option==Snake){
+                if(currentplayer==1){
+                if(player1>=num){
+                    player1 -= num;
+                }
+                }
+                else{
+                    if(player2>=num){
+                        player2 -= num;
+                    }
                 }
                 System.out.println("Selected option is Snake");
-                System.out.println("You are at position "+position);
+                System.out.println("Player 1 is at position "+player1);
+                System.out.println("Player 2 is at position "+player2);
                 System.out.println();
             }
-            else{
+            if(option==No_play){
                 System.out.println("Selected option is No Play");
-                System.out.println("You are at position "+position);
+                System.out.println("Player 1 is at position "+player1);
+                System.out.println("Player 2 is at position "+player2);
                 System.out.println();
             }
-            if(position==100){
-                break;
-            }
+            currentplayer = (currentplayer==1)?2:1;
         }
-        System.out.println("You win");
-        System.out.println("Total dice count is "+dice_count);
     }
 }
