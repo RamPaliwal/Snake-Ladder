@@ -8,7 +8,9 @@ public class Snake_Ladder {
             int option=(int) Math.floor(Math.random()*10)%3;
             int num = (int) Math.floor(Math.random()*10)%6+1;
             if(option==Ladder){
+                if(num+position<=100){
                 position += num;
+                }
                 System.out.println("Selected option is Ladder");
                 System.out.println("You are at position "+position);
             }
@@ -22,6 +24,9 @@ public class Snake_Ladder {
             else{
                 System.out.println("Selected option is No Play");
                 System.out.println("You are at position "+position);
+            }
+            if(position==100){
+                break;
             }
         }
         System.out.println("You win");
