@@ -1,10 +1,26 @@
 public class Snake_Ladder {
     public static void main(String[] args) {
-        int start_position = 0;
         System.out.println("Welcome to snake & ladder game");
-        System.out.println("You are at position "+start_position);
-	int num = (int) Math.floor(Math.random()*10)%6+1;
-        System.out.println("You got "+num+" on die");
-
+	int position=0;
+        int Ladder=1;
+        int Snake=2;
+        int option=(int) Math.floor(Math.random()*10)%3;
+        int num = (int) Math.floor(Math.random()*10)%6+1;
+        if(option==Ladder){
+            position += num;
+            System.out.println("Selected option is Ladder");
+            System.out.println("You are at position "+position);
+        }
+        else if(option==Snake){
+            if(position>=num){
+            position -= num;
+            }
+            System.out.println("Selected option is Snake");
+            System.out.println("You are at position "+position);
+        }
+        else{
+            System.out.println("Selected option is No Play");
+            System.out.println("You are at position "+position);
+        }
     }
 }
